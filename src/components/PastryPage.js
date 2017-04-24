@@ -6,6 +6,16 @@ function formatPrice (priceInCents) {
 }
 
 class PastryPage extends React.Component {
+  constructor () {
+    super()
+    this.addToOrder = this.addToOrder.bind(this)
+  }
+
+  addToOrder (e) {
+    e.preventDefault()
+    console.log(this.pastryName.value)
+  }
+
   render () {
     const { pastry } = this.props
     return (
@@ -20,6 +30,10 @@ class PastryPage extends React.Component {
             <div className='price'>{formatPrice(pastry.price)}</div>
           </div>
         </div>
+        <form method='POST' action='/orders' className='add-to-order' onSubmit={this.addToOrder}>
+          <input type='hidden' value={pastry.name} ref={(input) => { this.pastryName = input }} />
+          <button type='submit'>Add to Order</button>
+        </form>
       </div>
     )
   }
