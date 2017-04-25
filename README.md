@@ -44,6 +44,7 @@ Visit <a href="http://localhost:3000">http://localhost:3000</a>
 
 ## Helpful Resources
 
+- [Create React App](https://github.com/facebookincubator/create-react-app)
 - [React Events](https://facebook.github.io/react/docs/events.html)
 - [Jest (for testing)](https://facebook.github.io/jest/docs/tutorial-react.html)
 - [React Router](https://reacttraining.com/react-router/)
