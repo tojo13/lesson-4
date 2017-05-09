@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import './PastryList.css'
 
@@ -17,6 +18,10 @@ class PastryList extends React.Component {
       </ul>
     )
   }
+}
+
+PastryList.propTypes = {
+  pastries: PropTypes.object.isRequired
 }
 
 export default PastryList
