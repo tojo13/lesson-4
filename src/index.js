@@ -14,16 +14,43 @@ import PastryList from './components/PastryList'
 import PastryPage from './components/PastryPage'
 import NotFound from './components/NotFound'
 
+function getTotalPrice (pastries, totalPrice = 0) {
+  return pastries.reduce((acc, p) => {
+    return acc + p.price
+  }, totalPrice)
+}
+
 class Root extends React.Component {
   constructor () {
     super()
     this.state = {
-      pastries
+      pastries,
+      order: {
+        items: [],
+        price: 0
+      }
     }
+    this.addToOrder = this.addToOrder.bind(this)
   }
 
-  addToOrder (e) {
-    e.preventDefault()
+  addToOrder (event) {
+    event.preventDefault()
+    console.log({target: event.target})
+    const input = event.target.querySelector('input')
+    const value = input.value
+
+    const pastries = Object.keys(this.state.pastries).map(key => this.state.pastries[key])
+    const pastry = pastries.find(p => p.name === value)
+    const order = Object.assign({}, this.state.order)
+    order.items.push(pastry)
+    order.price = getTotalPrice(order.items, order.price)
+
+    this.setState({
+      order
+    })
+
+    console.log({event})
+    console.log({type: event.type})
     console.log('added to order!')
   }
 

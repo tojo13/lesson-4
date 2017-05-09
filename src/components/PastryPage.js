@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './PastryPage.css'
 
 function formatPrice (priceInCents) {
@@ -27,6 +28,11 @@ class PastryPage extends React.Component {
       </div>
     )
   }
+}
+
+PastryPage.propTypes = {
+  pastry: PropTypes.object.isRequired,
+  addToOrder: PropTypes.func.isRequired
 }
 
 export default PastryPage
