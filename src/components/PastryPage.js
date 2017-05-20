@@ -1,4 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
+import GoToList from './goToList'
+import GoToBasket from './goToBasket'
+
 import './PastryPage.css'
 
 function formatPrice (priceInCents) {
@@ -10,6 +15,8 @@ class PastryPage extends React.Component {
     const { pastry } = this.props
     return (
       <div className='pastry-page'>
+        <GoToList />
+        <GoToBasket />
         <div className='pastry-container'>
           <div className='pastry-img-container'>
             <img src={pastry.image} alt={pastry.name} />
@@ -20,13 +27,22 @@ class PastryPage extends React.Component {
             <div className='price'>{formatPrice(pastry.price)}</div>
           </div>
         </div>
-        <form method='POST' action='/orders' className='add-to-order' onSubmit={this.props.addToOrder}>
-          <input type='hidden' value={pastry.name} ref={(input) => { this.pastryName = input }} />
+        <form method='POST' action='/orders' className='add-to-order'
+          onSubmit={this.props.addToOrder}
+        >
+          <input type='hidden' value={pastry.name} ref={(input) => {
+            this.pastryName = input
+          }} />
           <button type='submit'>Add to Order</button>
         </form>
       </div>
     )
   }
+}
+
+PastryPage.propTypes = {
+  pastry: PropTypes.object.isRequired,
+  addToOrder: PropTypes.func.isRequired
 }
 
 export default PastryPage

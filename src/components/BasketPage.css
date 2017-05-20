@@ -1,0 +1,19 @@
+.basket-page {
+  text-align: center;
+}
+
+.basket-list {
+  text-align: justify-all;
+  margin: 0 auto;
+  max-width: 500px;
+  font-size: 26px;
+  border-spacing: 50px 0;
+}
+
+.list-header {
+  border-bottom: 1px solid #000;
+}
+
+.subtotal {
+  border-top: 1px solid #000;
+}
